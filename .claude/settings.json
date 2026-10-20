@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "git@chuli": true
+  },
+  "extraKnownMarketplaces": {
+    "chuli": {
+      "source": {
+        "source": "github",
+        "repo": "TomasAntunez/agent-plugins"
+      },
+      "autoUpdate": true
+    }
+  }
+}
