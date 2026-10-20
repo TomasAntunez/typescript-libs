@@ -191,7 +191,7 @@ A few rules to keep the contract consistent:
 
 ## 📄 License
 
-MIT - see the [LICENSE](https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/value-objects/LICENSE) file for details.
+MIT - see the [LICENSE](https://github.com/TomasAntunez/typescript-libs/blob/main/libs/value-objects/LICENSE) file for details.
 
 ## 👤 Author
 

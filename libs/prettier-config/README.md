@@ -56,7 +56,7 @@ export default {
 
 ## 📄 License
 
-MIT - see the [LICENSE](https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/prettier-config/LICENSE) file for details.
+MIT - see the [LICENSE](https://github.com/TomasAntunez/typescript-libs/blob/main/libs/prettier-config/LICENSE) file for details.
 
 ## 👤 Author
 

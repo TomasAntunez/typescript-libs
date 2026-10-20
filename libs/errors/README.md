@@ -135,7 +135,7 @@ throw new InsufficientBalanceError('Account balance is insufficient', {
 
 ## 📄 License
 
-MIT - see the [LICENSE](https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/errors/LICENSE) file for details.
+MIT - see the [LICENSE](https://github.com/TomasAntunez/typescript-libs/blob/main/libs/errors/LICENSE) file for details.
 
 ## 👤 Author
 

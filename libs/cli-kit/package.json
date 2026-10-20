@@ -14,12 +14,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TomasAntunez/chuli-dev-libs.git",
+    "url": "git+https://github.com/TomasAntunez/typescript-libs.git",
     "directory": "libs/cli-kit"
   },
-  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/tree/main/libs/cli-kit",
+  "homepage": "https://github.com/TomasAntunez/typescript-libs/tree/main/libs/cli-kit",
   "bugs": {
-    "url": "https://github.com/TomasAntunez/chuli-dev-libs/issues"
+    "url": "https://github.com/TomasAntunez/typescript-libs/issues"
   },
   "publishConfig": {
     "access": "public"
