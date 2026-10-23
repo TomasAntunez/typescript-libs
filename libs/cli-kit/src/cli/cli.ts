@@ -60,6 +60,11 @@ export class Cli {
       return;
     }
 
+    if (commandName === '--version' || commandName === '-v') {
+      console.log(this.version.toString());
+      return;
+    }
+
     const command = this.commands.get(commandName);
 
     if (!command) {
@@ -89,6 +94,15 @@ export class Cli {
     }
 
     lines.push(...formatHelpTable(rows));
+
+    lines.push(
+      '',
+      'Options:',
+      ...formatHelpTable([
+        { label: '-h, --help', description: 'Show this help' },
+        { label: '-v, --version', description: 'Show the version' },
+      ]),
+    );
 
     console.log(lines.join('\n'));
   }
