@@ -44,10 +44,6 @@
       }
     }
   },
-  "dependencies": {
-    "@chuli-dev/errors": "*",
-    "@chuli-dev/value-objects": "*"
-  },
   "peerDependencies": {
     "@chuli-dev/errors": "*",
     "@chuli-dev/value-objects": "*"
