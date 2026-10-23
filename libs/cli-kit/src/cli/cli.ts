@@ -2,9 +2,9 @@ import { parseOptional, Text } from '@chuli-dev/value-objects';
 
 import type { Command } from '../commands/command.js';
 import { Identifier } from '../identifiers/identifier.vo.js';
+import { formatHelpTable, type HelpTableRow } from '../shared/format-help-table.util.js';
 
 import { DuplicateCommandError } from './duplicate-command.error.js';
-import { MissingCommandError } from './missing-command.error.js';
 import { UnknownCommandError } from './unknown-command.error.js';
 
 export interface CliProps {
@@ -55,8 +55,9 @@ export class Cli {
   async run(): Promise<void> {
     const [commandName, ...tokens] = process.argv.slice(2);
 
-    if (!commandName) {
-      throw new MissingCommandError();
+    if (!commandName || commandName === '--help' || commandName === '-h') {
+      this.showHelp();
+      return;
     }
 
     const command = this.commands.get(commandName);
@@ -68,5 +69,27 @@ export class Cli {
     const input = command.config.parse(tokens);
 
     await command.execute(input);
+  }
+
+  private showHelp(): void {
+    const name = this.name.toString();
+
+    const lines = [`${name} ${this.version.toString()}`];
+
+    if (this.description) {
+      lines.push(this.description.toString());
+    }
+
+    lines.push('', `Usage: ${name} <command> [arguments] [options]`, '', 'Commands:');
+
+    const rows: HelpTableRow[] = [];
+
+    for (const [commandName, command] of this.commands) {
+      rows.push({ label: commandName, description: command.config.description?.toString() });
+    }
+
+    lines.push(...formatHelpTable(rows));
+
+    console.log(lines.join('\n'));
   }
 }
