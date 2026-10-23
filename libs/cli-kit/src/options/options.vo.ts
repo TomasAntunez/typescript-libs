@@ -8,7 +8,11 @@ import { Flag, type FlagPrimitives } from './flag.vo.js';
 import { MissingRequiredOptionError } from './missing-required-option.error.js';
 import { Option, type OptionPrimitives } from './option.vo.js';
 import { OptionType } from './option-type.enum.js';
+import { ReservedOptionError } from './reserved-option.error.js';
 import { UnknownOptionError } from './unknown-option.error.js';
+
+const RESERVED_NAME = 'help';
+const RESERVED_SHORT_NAME = 'h';
 
 export type OptionLike = Option | Flag;
 
@@ -43,6 +47,9 @@ export class Options<TValues extends InputValues = InputValues> extends ValueObj
 
       const name = option.name.toString();
 
+      if (name === RESERVED_NAME) {
+        throw new ReservedOptionError(name, key);
+      }
       if (this.byName.has(name)) {
         throw new DuplicateIdentifierError(name, key);
       }
@@ -52,6 +59,9 @@ export class Options<TValues extends InputValues = InputValues> extends ValueObj
 
       const shortName = option.shortName.toString();
 
+      if (shortName === RESERVED_SHORT_NAME) {
+        throw new ReservedOptionError(shortName, key);
+      }
       if (this.byShortName.has(shortName)) {
         throw new DuplicateIdentifierError(shortName, key);
       }
