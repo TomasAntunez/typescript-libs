@@ -146,7 +146,7 @@ Each entry in `groups` is itself an array of regex strings; imports matching any
 
 ## 📄 License
 
-MIT - see the [LICENSE](https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/eslint-config/LICENSE) file for details.
+MIT - see the [LICENSE](https://github.com/TomasAntunez/typescript-libs/blob/main/libs/eslint-config/LICENSE) file for details.
 
 ## 👤 Author
 

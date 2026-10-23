@@ -1,4 +1,4 @@
-# chuli-dev-libs
+# typescript-libs
 
 A monorepo of focused, opinionated TypeScript libraries published under the `@chuli-dev` scope on npm.
 
@@ -33,8 +33,8 @@ This is a monorepo managed with **npm workspaces**.
 **Setup:**
 
 ```bash
-git clone git@github.com:TomasAntunez/chuli-dev-libs.git
-cd chuli-dev-libs
+git clone git@github.com:TomasAntunez/typescript-libs.git
+cd typescript-libs
 npm install
 ```
 

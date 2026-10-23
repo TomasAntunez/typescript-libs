@@ -148,7 +148,7 @@ Available CJS presets: `lib.cjs`, `node.cjs`, `node.cjs.lib`. They emit `module:
 
 ## 📄 License
 
-MIT - see the [LICENSE](https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/typescript-config/LICENSE) file for details.
+MIT - see the [LICENSE](https://github.com/TomasAntunez/typescript-libs/blob/main/libs/typescript-config/LICENSE) file for details.
 
 ## 👤 Author
 
