@@ -1,6 +1,7 @@
 import { ValueObject } from '@chuli-dev/value-objects';
 
 import { DuplicateIdentifierError } from '../identifiers/duplicate-identifier.error.js';
+import type { HelpTableRow } from '../shared/format-help-table.util.js';
 import type { InputValues } from '../shared/input-values.dto.js';
 import type { ValuesAccumulator } from '../shared/values.accumulator.js';
 
@@ -112,5 +113,21 @@ export class Options<TValues extends InputValues = InputValues> extends ValueObj
         throw new MissingRequiredOptionError(match.option.name.toString(), match.key);
       }
     }
+  }
+
+  toHelpRows(): HelpTableRow[] {
+    const rows: HelpTableRow[] = [];
+
+    for (const { option } of this.byName.values()) {
+      let description = option.description?.toString();
+
+      if (option.type === OptionType.Option && option.isRequired.toBoolean()) {
+        description = description ? `${description} (required)` : '(required)';
+      }
+
+      rows.push({ label: option.toUsage(), description });
+    }
+
+    return rows;
   }
 }

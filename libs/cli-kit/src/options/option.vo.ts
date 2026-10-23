@@ -33,4 +33,8 @@ export class Option extends BaseOption {
       parse: primitives.parse,
     });
   }
+
+  override toUsage(): string {
+    return `${super.toUsage()} <value>`;
+  }
 }

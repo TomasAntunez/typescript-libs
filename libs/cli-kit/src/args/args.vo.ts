@@ -1,6 +1,7 @@
 import { ValueObject } from '@chuli-dev/value-objects';
 
 import { DuplicateIdentifierError } from '../identifiers/duplicate-identifier.error.js';
+import type { HelpTableRow } from '../shared/format-help-table.util.js';
 import type { InputValues } from '../shared/input-values.dto.js';
 import type { ValuesAccumulator } from '../shared/values.accumulator.js';
 
@@ -108,5 +109,16 @@ export class Args<TValues extends InputValues = InputValues> extends ValueObject
         throw new MissingRequiredArgumentError(match.arg.name.toString(), match.key);
       }
     }
+  }
+
+  toUsage(): string {
+    return this.entries.map(({ arg }) => arg.toUsage()).join(' ');
+  }
+
+  toHelpRows(): HelpTableRow[] {
+    return this.entries.map(({ arg }) => ({
+      label: arg.name.toString(),
+      description: arg.description?.toString(),
+    }));
   }
 }

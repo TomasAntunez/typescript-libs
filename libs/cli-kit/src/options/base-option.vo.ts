@@ -29,4 +29,10 @@ export abstract class BaseOption extends BaseInput {
       shortName: parseOptional(primitives.shortName, ShortIdentifier.fromString),
     };
   }
+
+  toUsage(): string {
+    const name = `--${this.name.toString()}`;
+
+    return this.shortName ? `-${this.shortName.toString()}, ${name}` : `    ${name}`;
+  }
 }

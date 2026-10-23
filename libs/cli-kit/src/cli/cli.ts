@@ -71,6 +71,11 @@ export class Cli {
       throw new UnknownCommandError(commandName, this.name.toString());
     }
 
+    if (tokens.includes('--help') || tokens.includes('-h')) {
+      command.config.showHelp(this.name.toString());
+      return;
+    }
+
     const input = command.config.parse(tokens);
 
     await command.execute(input);

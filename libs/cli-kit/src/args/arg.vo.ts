@@ -39,4 +39,10 @@ export class Arg extends BaseInput {
       parse: primitives.parse,
     });
   }
+
+  toUsage(): string {
+    const name = this.isVariadic.toBoolean() ? `${this.name.toString()}...` : this.name.toString();
+
+    return this.isRequired.toBoolean() ? `<${name}>` : `[${name}]`;
+  }
 }

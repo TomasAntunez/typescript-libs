@@ -9,6 +9,7 @@ import { OptionType } from '../options/option-type.enum.js';
 import { Options, type OptionsPrimitives } from '../options/options.vo.js';
 import { RepeatedOptionError } from '../options/repeated-option.error.js';
 import { UnknownOptionError } from '../options/unknown-option.error.js';
+import { formatHelpTable } from '../shared/format-help-table.util.js';
 import { ValuesAccumulator } from '../shared/values.accumulator.js';
 
 import type { CommandInput } from './command-input.dto.js';
@@ -110,5 +111,31 @@ export class CommandConfig<TInput extends CommandInput = CommandInput> {
     this.args?.complete(argIndex, argValues);
 
     return { args: argValues.toValues(), options: optionValues.toValues() } as TInput;
+  }
+
+  showHelp(cliName: string): void {
+    const usage = [cliName, this.name.toString()];
+
+    if (this.args) {
+      usage.push(this.args.toUsage());
+    }
+    usage.push('[options]');
+
+    const lines = [`Usage: ${usage.join(' ')}`];
+
+    if (this.description) {
+      lines.push('', this.description.toString());
+    }
+
+    if (this.args) {
+      lines.push('', 'Arguments:', ...formatHelpTable(this.args.toHelpRows()));
+    }
+
+    const optionRows = this.options?.toHelpRows() ?? [];
+    optionRows.push({ label: '-h, --help', description: 'Show this help' });
+
+    lines.push('', 'Options:', ...formatHelpTable(optionRows));
+
+    console.log(lines.join('\n'));
   }
 }
