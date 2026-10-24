@@ -86,6 +86,8 @@ jobs:
             exit 0
           fi
 
+          failed=0
+
           while IFS= read -r pkg; do
             name="@chuli-dev/$pkg"
             version=$(jq -r .version "libs/$pkg/package.json")
@@ -97,6 +99,7 @@ jobs:
               echo "✅ $name@$version published"
             else
               echo "❌ Failed to publish $name@$version"
+              failed=1
               continue
             fi
 
@@ -104,5 +107,8 @@ jobs:
               echo "🏷️ Tagged $tag"
             else
               echo "❌ Failed to tag $tag"
+              failed=1
             fi
           done <<< "$selected"
+
+          exit $failed
