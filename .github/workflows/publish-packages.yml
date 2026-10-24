@@ -47,6 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -92,7 +93,7 @@ jobs:
 
             echo "Publishing $name@$version..."
 
-            if npm publish --workspace="$name"; then
+            if npm publish --workspace="$name" --provenance; then
               echo "✅ $name@$version published"
             else
               echo "❌ Failed to publish $name@$version"
