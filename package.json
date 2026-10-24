@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "postinstall": "husky && npm run build",
-    "build": "tsc -b tsconfig.build.esm.json tsconfig.build.cjs.json && chuli-dev write-dist-package-jsons",
+    "build": "tsc -b tsconfig.build.esm.json && tsc -b tsconfig.build.cjs.json && chuli-dev write-dist-package-jsons",
     "build:clean": "chuli-dev write-dist-package-jsons --clean && tsc -b tsconfig.build.esm.json tsconfig.build.cjs.json --clean",
     "start:example": "npm run start --workspace=@chuli-dev/example",
     "format:check": "prettier --check .",
