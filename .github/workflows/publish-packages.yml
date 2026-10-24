@@ -35,6 +35,11 @@ on:
         required: false
         type: boolean
         default: false
+      cli-kit:
+        description: '@chuli-dev/cli-kit'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   publish:
