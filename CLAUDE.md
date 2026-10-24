@@ -77,4 +77,4 @@ To scale to a new lib or app, declare a `lint:check` script in its `package.json
 
 ## Publishing
 
-Triggered manually via the `publish-packages.yml` GitHub Actions workflow (`workflow_dispatch`), selecting individual packages to publish. The workflow runs `npm ci` (which runs the root `postinstall` → `husky && npm run build`, leaving all libs built), then the quality gates, then `npm publish` for each selected package.
+Triggered manually via the `publish-packages.yml` GitHub Actions workflow (`workflow_dispatch`), selecting individual packages to publish. The workflow runs `npm ci` (which runs the root `postinstall` → `husky && npm run build`, leaving all libs built), then the quality gates, then `npm publish` for each selected package. Every successful publish is tagged on the workflow commit as an annotated `<package>@<version>` tag (e.g. `cli-kit@0.1.0`) and pushed.

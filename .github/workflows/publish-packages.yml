@@ -45,6 +45,8 @@ jobs:
   publish:
     name: Publish packages to npm
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -65,6 +67,11 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Publish selected packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -79,11 +86,22 @@ jobs:
           fi
 
           while IFS= read -r pkg; do
-            echo "Publishing @chuli-dev/$pkg..."
+            name="@chuli-dev/$pkg"
+            version=$(jq -r .version "libs/$pkg/package.json")
+            tag="$pkg@$version"
 
-            if npm publish --workspace="@chuli-dev/$pkg"; then
-              echo "✅ @chuli-dev/$pkg published successfully"
+            echo "Publishing $name@$version..."
+
+            if npm publish --workspace="$name"; then
+              echo "✅ $name@$version published"
             else
-              echo "❌ Failed to publish @chuli-dev/$pkg"
+              echo "❌ Failed to publish $name@$version"
+              continue
+            fi
+
+            if git tag -a "$tag" -m "$name@$version" && git push origin "$tag"; then
+              echo "🏷️ Tagged $tag"
+            else
+              echo "❌ Failed to tag $tag"
             fi
           done <<< "$selected"
