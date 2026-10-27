@@ -7,3 +7,6 @@
 
 # Local Claude Code settings
 .claude/settings.local.json
+
+# Copied from the root LICENSE by the build
+libs/*/LICENSE
