@@ -4,6 +4,7 @@ import { FarewellCommand } from './commands/farewell.command.js';
 import { GreetCommand } from './commands/greet.command.js';
 import { PingCommand } from './commands/ping.command.js';
 import { WriteDistPackageJsonsCommand } from './commands/write-dist-package-jsons.command.js';
+import { WriteLibLicensesCommand } from './commands/write-lib-licenses.command.js';
 
 const cli = Cli.fromPrimitives({
   name: 'chuli-dev',
@@ -14,6 +15,7 @@ const cli = Cli.fromPrimitives({
     new GreetCommand(),
     new PingCommand(),
     new WriteDistPackageJsonsCommand(),
+    new WriteLibLicensesCommand(),
   ],
 });
 
