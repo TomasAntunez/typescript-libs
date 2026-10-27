@@ -5,7 +5,7 @@ A monorepo of focused, opinionated TypeScript libraries published under the `@ch
 ## ✨ Features
 
 - **TypeScript-first** - Strict configs, full type declarations, ESM-first packages
-- **Dual ESM/CJS where it matters** - `errors` and `value-objects` ship both formats; configs stay ESM-only
+- **Dual ESM/CJS where it matters** - Runtime libraries ship both formats; configs stay ESM-only
 - **Cross-platform domain libs** - `errors` and `value-objects` run in Node.js, modern browsers, Bun and Deno
 - **Modern tooling** - Flat-config ESLint, strict `tsconfig` presets, opinionated Prettier defaults
 - **Independent packages** - Pick only what you need
@@ -19,6 +19,7 @@ A monorepo of focused, opinionated TypeScript libraries published under the `@ch
 | [`@chuli-dev/prettier-config`](libs/prettier-config)     | Shared Prettier configuration                                              |
 | [`@chuli-dev/errors`](libs/errors)                       | Domain-oriented error classes for TypeScript applications                  |
 | [`@chuli-dev/value-objects`](libs/value-objects)         | Value Object base classes and primitives for DDD-style TypeScript projects |
+| [`@chuli-dev/cli-kit`](libs/cli-kit)                     | Object-oriented building blocks for CLIs in TypeScript                     |
 
 Each package is published independently to npm. See its README for installation and usage.
 
