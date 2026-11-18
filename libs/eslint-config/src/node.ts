@@ -5,7 +5,7 @@ import globals from 'globals';
 export const node: Linter.Config[] = [
   {
     name: '@chuli-dev/node',
-    files: ['**/*.{js,mjs,ts,mts}'],
+    files: ['**/*.{js,mjs,jsx,ts,tsx,mts}'],
     languageOptions: {
       globals: {
         ...globals.node,

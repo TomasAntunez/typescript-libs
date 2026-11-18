@@ -3,7 +3,7 @@ import type { Linter } from 'eslint';
 export const esm: Linter.Config[] = [
   {
     name: '@chuli-dev/esm',
-    files: ['**/*.{js,mjs,ts,mts}'],
+    files: ['**/*.{js,mjs,jsx,ts,tsx,mts}'],
     languageOptions: {
       sourceType: 'module',
       globals: {
