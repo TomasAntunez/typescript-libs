@@ -1,6 +1,6 @@
 {
   "name": "@chuli-dev/eslint-config",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "type": "module",
   "description": "Self-contained ESLint flat-config presets for modern TypeScript projects",
   "keywords": [
