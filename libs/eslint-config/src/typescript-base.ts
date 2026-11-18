@@ -17,6 +17,8 @@ export const typescriptBase: Linter.Config[] = [
 
       '@typescript-eslint/no-invalid-void-type': ['error', { allowAsThisParameter: true }],
 
+      '@typescript-eslint/no-extraneous-class': ['error', { allowStaticOnly: true }],
+
       '@typescript-eslint/explicit-function-return-type': [
         'error',
         {
