@@ -6,13 +6,14 @@ Self-contained ESLint flat-config presets for modern TypeScript projects.
 
 - **One import, one preset** - Each preset is a complete ESLint flat config; just `export default` it
 - **Three orthogonal axes** - TypeScript (`none` / `strict` / `type-aware`) × Node.js × ESM enforcement
+- **React preset** - Type-aware ESM preset with the React Hooks rules
 - **Flat config ready** - Built for ESLint v9+ `eslint.config.js`
 - **Practical defaults** - Strong rules for code quality, imports, and consistency
 
 ## 📦 Installation
 
 ```bash
-npm install --save-dev @chuli-dev/eslint-config eslint @eslint/js eslint-config-prettier eslint-plugin-simple-import-sort eslint-plugin-unused-imports eslint-plugin-n globals typescript typescript-eslint
+npm install --save-dev @chuli-dev/eslint-config eslint @eslint/js eslint-config-prettier eslint-plugin-simple-import-sort eslint-plugin-unused-imports eslint-plugin-n eslint-plugin-react-hooks globals typescript typescript-eslint
 ```
 
 Each preset only depends on a subset of the peers above:
@@ -26,6 +27,7 @@ Each preset only depends on a subset of the peers above:
 | `eslint-plugin-unused-imports`     | All presets                  |
 | `globals`                          | All presets                  |
 | `eslint-plugin-n`                  | Any `node` / `*Node*` preset |
+| `eslint-plugin-react-hooks`        | Any `*React*` preset         |
 | `typescript`                       | Any `typescript*` preset     |
 | `typescript-eslint`                | Any `typescript*` preset     |
 
@@ -44,20 +46,21 @@ export default typescriptTypecheckedNodeEsm;
 
 ## 📋 Available Presets
 
-| Preset                             | TypeScript | Node.js | ESM enforcement |
-| ---------------------------------- | ---------- | ------- | --------------- |
-| **`base`**                         | —          | —       | —               |
-| **`node`**                         | —          | ✓       | —               |
-| **`esm`**                          | —          | —       | ✓               |
-| **`nodeEsm`**                      | —          | ✓       | ✓               |
-| **`typescript`**                   | strict     | —       | —               |
-| **`typescriptEsm`**                | strict     | —       | ✓               |
-| **`typescriptNode`**               | strict     | ✓       | —               |
-| **`typescriptNodeEsm`**            | strict     | ✓       | ✓               |
-| **`typescriptTypechecked`**        | type-aware | —       | —               |
-| **`typescriptTypecheckedEsm`**     | type-aware | —       | ✓               |
-| **`typescriptTypecheckedNode`**    | type-aware | ✓       | —               |
-| **`typescriptTypecheckedNodeEsm`** | type-aware | ✓       | ✓               |
+| Preset                              | TypeScript | Node.js | ESM enforcement | React |
+| ----------------------------------- | ---------- | ------- | --------------- | ----- |
+| **`base`**                          | —          | —       | —               | —     |
+| **`node`**                          | —          | ✓       | —               | —     |
+| **`esm`**                           | —          | —       | ✓               | —     |
+| **`nodeEsm`**                       | —          | ✓       | ✓               | —     |
+| **`typescript`**                    | strict     | —       | —               | —     |
+| **`typescriptEsm`**                 | strict     | —       | ✓               | —     |
+| **`typescriptNode`**                | strict     | ✓       | —               | —     |
+| **`typescriptNodeEsm`**             | strict     | ✓       | ✓               | —     |
+| **`typescriptTypechecked`**         | type-aware | —       | —               | —     |
+| **`typescriptTypecheckedEsm`**      | type-aware | —       | ✓               | —     |
+| **`typescriptTypecheckedNode`**     | type-aware | ✓       | —               | —     |
+| **`typescriptTypecheckedNodeEsm`**  | type-aware | ✓       | ✓               | —     |
+| **`typescriptTypecheckedReactEsm`** | type-aware | —       | ✓               | ✓     |
 
 ### What each axis adds
 
@@ -65,6 +68,7 @@ export default typescriptTypecheckedNodeEsm;
 - **TypeScript `type-aware`** - Adds rules that require type information (`no-floating-promises`, `no-misused-promises`, etc.). Requires a valid `tsconfig.json`.
 - **Node.js** - Adds Node globals and `eslint-plugin-n` rules (`no-deprecated-api`, `prefer-node-protocol`, `no-process-exit`).
 - **ESM enforcement** - Forces `sourceType: 'module'`, disables CJS globals, and forbids `require()` / `module.exports` syntax.
+- **React** - Adds `eslint-plugin-react-hooks` (v7+) `configs.flat.recommended` on `**/*.{ts,tsx}`: Rules of Hooks, `exhaustive-deps`, and the React Compiler rules.
 
 ## 🔀 Import order
 

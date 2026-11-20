@@ -3,6 +3,7 @@ import type { Linter } from 'eslint';
 import { base as basePart } from './base.js';
 import { esm as esmPart } from './esm.js';
 import { node as nodePart } from './node.js';
+import { react as reactPart } from './react.js';
 import { typescript as typescriptPart } from './typescript.js';
 import { typescriptTypechecked as typescriptTypecheckedPart } from './typescript-typechecked.js';
 
@@ -38,4 +39,9 @@ export const typescriptTypecheckedNodeEsm: Linter.Config[] = [
   ...nodePart,
   ...esmPart,
   ...typescriptTypecheckedPart,
+];
+
+export const typescriptTypecheckedReactEsm: Linter.Config[] = [
+  ...typescriptTypecheckedEsm,
+  ...reactPart,
 ];
